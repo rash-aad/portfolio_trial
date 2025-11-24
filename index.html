@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <main class="hero-section">
+
+        <div class="hero-top-left">
+            Logo
+        </div>
+
+        <div class="hero-top-right">
+    <div id="hamburger-btn"> 
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </div>
+</div>
+
+<div class="nav-overlay" id="nav-overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+    
+    <div class="overlay-content">
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#projects" onclick="toggleMenu()">Projects</a>
+        <a href="#skills" onclick="toggleMenu()">Skills</a>
+    </div>
+</div>
+
+
+
+        <div class="hero-bottom-left">
+            <a href="#">FB</a>
+            <a href="#">IG</a>
+            <a href="#">X</a>
+        </div>
+
+        <div class="hero-bottom-right">
+    <div class="theme-switch-wrapper">
+        <span id="mode-label">Light Mode</span>
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+    </div>
+</div>
+
+        <div class="hero-content">
+            <h1 class="hero-name">RASHAAD</h1>
+    
+            <h2 class="hero-subtitle">
+            I am <span class="auto-type"></span></h2>
+        </div>
+    </main>
+
+    <section class="page-2-content">
+
+        <div class="projects">
+            projects
+        </div>
+
+        <div class="About">
+            the man behind
+        </div>
+        
+        <div class="blogs">
+            blog
+        </div>
+        
+        <div class="clicks">
+            my clicks
+        </div>
+        
+        <div class="contact">
+            <a href="contact.html" style="text-decoration: none; color: inherit; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                Contact
+            </a>
+        </div>
+        
+        <div class="skills">
+            skills
+        </div>
+        
+        <div class="recommend">
+            recommendations
+        </div>
+        
+    </section>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        input, textarea {
+            width: 90%; 
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #000;
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+        }
+        button {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Get in Touch</h1>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="tel" id="contact" placeholder="Phone Number" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+            
+            <button type="submit" id="submitBtn">Send Message</button>
+        </form>
+        <p id="statusMessage" style="margin-top: 10px; font-weight: bold;"></p>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const statusMsg = document.getElementById('statusMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        const YOUR_PANTRY_ID = "328d17ac-4a1c-4598-9e12-37277a9b99d6"; 
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            submitBtn.innerText = "Sending...";
+
+            const data = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('contact').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+                date: new Date().toLocaleString()
+            };
+
+
+            fetch(`https://getpantry.cloud/apiv1/pantry/${YOUR_PANTRY_ID}/basket/ClientMessages`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    statusMsg.style.color = "green";
+                    statusMsg.innerText = "Message Sent Successfully!";
+                    form.reset(); 
+                } else {
+                    statusMsg.style.color = "red";
+                    statusMsg.innerText = "Error sending message.";
+                }
+                submitBtn.innerText = "Send Message";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                statusMsg.style.color = "red";
+                statusMsg.innerText = "Something went wrong.";
+                submitBtn.innerText = "Send Message";
+            });
+        });
+    </script>
+</body>
+</html>
